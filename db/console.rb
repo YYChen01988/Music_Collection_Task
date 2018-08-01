@@ -4,7 +4,7 @@ require_relative("../models/artist")
 
 
 
-AlbumCollection.delete_all()
+Album.delete_all()
 Artist.delete_all()
 
 
@@ -19,13 +19,13 @@ artist1.save()
 artist2.save()
 
 
-album1 = AlbumCollection.new({
+album1 = Album.new({
   'title' =>"Blaze",
   'style' =>"Pop",
   'artist_id' =>artist1.id()
   })
 
-album2 = AlbumCollection.new({
+album2 = Album.new({
   'title' =>"Odessey and Oracle",
   'style' =>"Rock",
   'artist_id' =>artist2.id()

@@ -2,7 +2,7 @@ require("pg")
 
 require_relative("../db/sql_runner.rb")
 
-class AlbumCollection
+class Album
 
   attr_accessor :title, :style
   attr_reader :id, :artist_id
@@ -26,7 +26,7 @@ class AlbumCollection
   def self.all()
     sql = "SELECT * FROM albums"
     results = SqlRunner.run(sql)
-    return results.map { |album| AlbumCollection.new(album) }
+    return results.map { |album| Album.new(album) }
   end
 
   def self.delete_all()
@@ -46,7 +46,7 @@ class AlbumCollection
     values = [id]
     results = SqlRunner.run(sql, values)
     album_hash = results.first
-    album_searched = AlbumCollection.new(album_hash)
+    album_searched = Album.new(album_hash)
     return album_searched
   end
 
@@ -56,5 +56,7 @@ class AlbumCollection
     results = SqlRunner.run(sql, values)
     return Artist.new(results[0])
   end
+
+
 
 end
